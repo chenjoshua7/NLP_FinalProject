@@ -1,0 +1,166 @@
+\documentclass[12pt]{article}
+\usepackage{float}
+\usepackage{caption, subcaption}
+\usepackage[T1]{fontenc}
+\usepackage[backend=bibtex, maxbibnames=99, sorting=none]{biblatex}
+\addbibresource{sample.bib}
+\usepackage{url}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{graphicx}
+\graphicspath{{Images/}}
+\usepackage{parskip}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{framed}
+\usepackage{fancyhdr}
+\usepackage{vmargin}
+\usepackage{subcaption} %usamos subcaption mejor que subfig (más moderno)
+\usepackage{eurosym}
+\usepackage[table,xcdraw]{xcolor} % add color to your tables
+\usepackage[bottom]{footmisc} %footnotes
+\definecolor{blau}{RGB}{210,235,255}
+\definecolor{blau2}{RGB}{120,170,225}
+\setmarginsrb{2.5 cm}{2 cm}{2 cm}{2.5 cm}{1 cm}{0.5 cm}{1 cm}{1 cm}
+
+\usepackage{multirow}
+
+\usepackage{chngcntr}
+
+\usepackage[framed, numbered]{matlab-prettifier}
+ 
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\numberwithin{equation}{section}
+
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
+
+\titleclass{\subsubsubsection}{straight}[\subsection]
+
+\newcounter{subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+\renewcommand\theparagraph{\thesubsubsubsection.\arabic{paragraph}} % optional; useful if paragraphs are to be numbered
+
+\titleformat{\subsubsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{5}{\z@}%
+  {3.25ex \@plus1ex \@minus.2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{6}{\parindent}%
+  {3.25ex \@plus1ex \@minus .2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\def\toclevel@subsubsubsection{4}
+\def\toclevel@paragraph{5}
+\def\toclevel@paragraph{6}
+\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
+\def\l@paragraph{\@dottedtocline{5}{10em}{5em}}
+\def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
+\makeatother
+
+\usepackage[table,xcdraw]{xcolor}
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+
+\usepackage{pdflscape} %Per poder posar la pàgina en horizontal
+\usepackage{multicol} %Escriure en columnes 
+ 
+	% Author
+\date{\today}							% Date
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{22DM014 - Intro to Natural Language Processing}
+\rhead{Analysis of Amazon Books and Review}
+\cfoot{\thepage}
+
+\begin{document}
+
+\begin{titlepage}
+	\centering
+    \includegraphics[scale = 0.7]{bse_logo.png}\\[1.2 cm]	% University Logo
+    \textsc{\LARGE Barcelona School of Economics}\\[2.0 cm]	% University Name
+	\textsc{\Large Data Science Methodology Program}\\[0.5 cm]				% Course Code
+	\textsc{\large 22DM014 - Intro to Natural Language Processing }\\[0.5 cm]				% Course Name
+	\rule{\linewidth}{0.2 mm} \\[0.4 cm]
+	{ \huge \bfseries Analysis of Amazon Books and Reviews }\\
+	\rule{ \linewidth}{0.2 mm} \\[1.5 cm]
+	
+\begin{center}
+    
+{ \emph{Authors: }\\
+    \textsc{Chen}, Joshua \\
+    \textsc{El Daou}, Mahmoud \\ 
+    \textsc{Gallegos}, Rafael \\} 
+
+\vspace{0.7cm}
+
+
+    \textit{Professors:}\\  \textsc{Mueller}, Hannes \\
+    	\textsc{Garcia}, Luis
+        \\ \vspace{0.5cm}
+
+
+\vspace{1.7cm}
+
+
+ \end{center}
+	\vfill
+	
+\end{titlepage}
+	
+\tableofcontents
+\vspace{1cm}
+\listoffigures
+\listoftables
+\pagebreak
+
+\newpage
+
+\section{Introduction}
+
+
+\section{Literature Reviews}
+
+\section{Dataset}
+
+
+
+\section{Preprocessing}
+
+\section{Exploratory Data Analysis}
+
+\section{Predicting Review Score from Text}
+
+\section{Review Description Alignment}
+
+\section{Conclusions}
+\vspace{1em} 
+
+
+%\bibliographystyle{plain}
+%\bibliography{Bibliography.bib}
+
+\newpage
+\printbibliography[heading=bibintoc]
+
+\end{document}
