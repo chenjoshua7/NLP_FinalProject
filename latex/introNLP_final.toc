@@ -1,8 +1,11 @@
 \contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
 \contentsline {section}{\numberline {2}Literature Reviews}{2}{section.2}%
 \contentsline {section}{\numberline {3}Dataset}{2}{section.3}%
-\contentsline {section}{\numberline {4}Preprocessing}{2}{section.4}%
-\contentsline {section}{\numberline {5}Exploratory Data Analysis}{2}{section.5}%
-\contentsline {section}{\numberline {6}Predicting Review Score from Text}{2}{section.6}%
-\contentsline {section}{\numberline {7}Review Description Alignment}{2}{section.7}%
-\contentsline {section}{\numberline {8}Conclusions}{2}{section.8}%
+\contentsline {section}{\numberline {4}Exploratory Data Analysis}{3}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Descriptions}{4}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}New York Times Bestsellers}{4}{subsubsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.2}Reviews}{4}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Sentiment Analysis}{4}{subsubsection.4.2.1}%
+\contentsline {section}{\numberline {5}Predicting Review Score from Text}{4}{section.5}%
+\contentsline {section}{\numberline {6}Review Description Alignment}{4}{section.6}%
+\contentsline {section}{\numberline {7}Conclusions}{4}{section.7}%
