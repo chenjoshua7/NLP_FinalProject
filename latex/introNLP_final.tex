@@ -137,9 +137,7 @@
 
 \section{Introduction}
 
-On July 16th, 1995, Amazon opened as an online book retailer, promoting itself as "the world's biggest bookstore". Since then, Amazon has clearly expanded into other ventures but still remains the largest seller of books in the world. Amazon generates \$28 billion worldwide every year with a selection of over 32 million books. With Kindle and Audible, Amazon also has majority control of the ebook and audiobook markets as well. While Amazon is no longer primarily known as predominantly a bookseller, they have succeeded in becoming the most dominant bookstore in the world.
-
-In 2013, Amazon acquired Goodreads, a social cataloging platform for books. Goodreads now has more than 150 million users and has become a cornerstone (for better or worse) in the book community. However, the partnership between world's largest bookseller and the largest community of readers, gives us the opportunity to acquire and use lots of book data to identify book trends and reader preferences.
+On July 16th, 1995, Amazon opened as an online book retailer, promoting itself as "the world's biggest bookstore". Since then, Amazon has clearly expanded into other ventures but still remains the largest seller of books in the world. Amazon generates \$28 billion worldwide every year with a selection of over 32 million books. With Kindle and Audible, Amazon also has majority control of the ebook and audiobook markets as well. While Amazon is no longer primarily known as predominantly a bookseller, they have succeeded in becoming the most dominant bookstore in the world. The world's largest bookseller gives us the opportunity to acquire and use lots of book data to identify book trends and reader preferences.
 
 \section{Literature Reviews}
 
@@ -194,7 +192,7 @@ Contained here are two large data sets contain information about Books and infor
     \end{minipage}
 \end{figure}
 
-There are 214,404 books in the book dataset and 3,000,000 reviews in the review dataset. Clearly, two very large datasets, we subsetted the datasets and reviews to only the most relevant for our purposes.
+There are 214,404 books in the book dataset and 3,000,000 reviews in the review dataset - with information scraped from the Google Books API. Clearly, two very large datasets, we subsetted the datasets and reviews to only the most relevant for our purposes.
 
 First we dropped all the books without any ratings or descriptions as these are irrelevant for our purpose. This reduced the amount of books to 45,127. We then dropped any books with less than 10 reviews, considering them insignificant enough. Furthermore, using the \textit{Langid} package in Python, we removed any books that were identified to be any language other than English. This leaves us with 6,399 books.
 
@@ -214,30 +212,63 @@ We only kept the reviews that were for one of our 6,399 books and used the same 
     \includegraphics[width=1.2\textwidth]{genre_counts.png}
     \caption{Percentage of Books by Genre}
     \end{minipage}
-
 \end{figure}
    \begin{figure}[ht]
-    \begin{minipage}[b]{0.49\linewidth}
-    \centering
-    \includegraphics[width=0.99\textwidth]{publisher_counts.png}
-    \caption{Percentage of Books by Publisher}
-   \end{minipage}
-    \hspace{0.01cm}
+
 \begin{minipage}[b]{0.49\linewidth}
     \centering
     \includegraphics[width=0.99\textwidth]{reviewcount.png}
-    \caption{Percentage of Books by Publisher}
+    \caption{Count of Books per Review Bin }
     \end{minipage}
+        \hspace{0.01cm}
+       \begin{minipage}[b]{0.49\linewidth}
+    \centering
+    \includegraphics[width=0.99\textwidth]{genre_reviews.png}
+    \caption{Average Review per Genre}
+   \end{minipage}
+
 \end{figure}
 
 First, to better understand the dataset we performed some exploratory data analysis. By calculating the average review scores for each book, we find that the largest representation of reviews are within the 3.0 - 4.0 range, with a significant majority of the books receiving a rating above 3.0. The median rating was a 3.6 and the mean was also around 3.6. While this in balance may be reflective of our selection bias of only the most reviewed books (i.e. the most popular books), it is typical for people to tend towards higher reviews as people selectively consume things they tend to enjoy rather than sampling randomly (ex. MovieLens dataset).
 
 By genre we see that the majority of the books are fiction. However, this is only broken down into Juvenile Fiction, Young Adult Fiction, and Fiction whereas non-fiction books are broken down into many topics/subtopics. Genres with less than 15 books were grouped into "Other" as there were a number of hyper-specfiic or uninformative genres. Particularly amusing ones include "Fairy", "Diners", "Bachelors", and "Human-computer Interaction".
 
-We also have the breakdown by publishers. While this was not utilized in this paper, an interesting extension of this project would be to use the description data to see if there are any significant differences among how different publishers market their books. 
+In Figure 4.3, we have the counts of books by the number of reviews they received (binned by a log 10 scale). Here we see that a significant majority of the books have received less than 100 reviews. However, there is a significant tail with the maximum review count reaching 4,895. Figure 4.4 shows the average review breakdown by genre. Interestingly, this chart implies that fiction books tend to have lower reviews than nonfiction books.
 
-Finally, we have the counts of books by the number of reviews they received (binned by a log 10 scale). Here we see that a significant majority of the books have received less than 100 reviews. However, there is a significant tail with the maximum review count reaching 4,895.
 
+\section{Descriptions}
+
+For each of the books in the dataset, there is a corresponding description.  To process this description, we removed all non-alphabet characters, tokenize the text, lemmatize the words, and remove stopwords (with the default \textit{nltk} stopwords with the addition of some of our own). These descriptions range from empty to 813 tokens with a mean of 67.19 and a median of 58. For exploration, here are some wordclouds to explore the descriptions using a document term matrix. What becomes immediately apparent in the Figure 5.1, which is created from 1-3 ngrams with no trimming of terms, is that the most common descriptions have very little to do with the actual books but rather to do with generalizations of the book or author. Particularly the phrase (New York Time Bestselling Author stands out). 
+
+\begin{figure}[b]
+\begin{minipage}[b]{0.49\linewidth}
+    \centering
+    \includegraphics[width=0.99\textwidth]{description_wc.png}
+    \caption{ngram - (1,3), no min or max}
+    \end{minipage}
+        \hspace{0.01cm}
+ \begin{minipage}[b]{0.49\linewidth}
+    \centering
+    \includegraphics[width=0.99\textwidth]{descrip_wc.png}
+    \caption{(1,3), min - 100, max - 0.3}
+ \end{minipage}
+ \end{figure} 
+
+This is to be expected because very specific words such as 'Hogwarts', 'Magic', and 'Bach' will not appear in most of the documents. For a more interesting and perhaps informative exploration, we set the minimum document frequency to 100, meaning a term must appear in at least 100 descriptions. This threshold is somewhat arbitrary, as word clouds only include the most frequent terms. Additionally, we set the maximum document frequency to 30 percent, indicating that a term appears in less than 30 percent of the books.
+
+Additionally, here are the wordclouds broken down by the 9 most popular genres. These provide a very interesting cursory perspective on each of these genres. For example, it seems like the philosophy section is dominated by Netizsche's "Thus Spoke Zarathustra" and, for some reason, motorcycles. Most of the other ones follow along expectations, although Juvenile Nonfiction does seem to carry overtly religious undertones.
+
+\begin{figure}[hb]
+    \centering
+    \includegraphics[width = \textwidth]{genre_wordclouds.png}
+\caption{Wordclouds of Term Frequencies by Genre} 
+\end{figure}
+
+\subsection{New York Times Bestsellers}
+
+The prevalence on "New York Times Bestseller" or "New York Times Bestselling Author" then begs the question, do people actually like these books? After a quick linear regression of Review Score to Ratings Count, we see a negative correlation. However, for a more informative look, we ran a quantile regression to see the relationship of Ratings Count with Review Score. Except for the top 10th percentile, it seems that increasing the popularity of books has an adversarial effect on the average review of the book. For a book to come from a bestselling author or New York Times bestseller, it will be interesting to see if this trend holds true. To study this, we will compare the effect of NYT bestseller against other popular books.
+
+Too extract which books are New York Times bestsellers (or written by New York Times Bestselling Authors), I implemented a modified Dictionary Method. I had three dictionaries, one indicating the presence of New York Times, one indicating whether it was bestseller or bestselling, and one with terms referring to the author. The thought behind this is that I will be able to differentiate between descriptions highlighting whether it was the author or the book that was bestselling. Based on this identification system, there are 386 books with 254 of them mentioning the author, and 132 without. For this section, I used all the reviews.
 
 \begin{figure}
     \centering
@@ -245,27 +276,29 @@ Finally, we have the counts of books by the number of reviews they received (bin
 \caption{Quantile Regression of Average Reviews per Book over Count of Reviews} 
 \end{figure}
 
-\subsection{Descriptions}
 
-\subsubsection{New York Times Bestsellers}
 
-\subsection{Reviews}
+\section{Reviews}
 In the reviews, there are two important text features - the review summary and the full review itself.
 
 
-\subsubsection{Sentiment Analysis}
+\subsection{Sentiment Analysis}
 
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.58]{bow_descriptions.png}
-    \caption{Bag of Words - Book Descriptions - MinDF = 20, MaxDF = 0.01}
-\end{figure}
 
 \section{Predicting Review Score from Text}
 
 \section{Review Description Alignment}
 
 \section{Conclusions}
+
+\section{Other Figures}
+
+\begin{figure}
+    \centering
+    \includegraphics[width = 0.5\textwidth]{publisher_counts.png}
+\caption{Percentage of Books by Publisher} 
+\end{figure}
+
 \vspace{1em} 
 
 
