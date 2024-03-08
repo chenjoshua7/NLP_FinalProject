@@ -2,8 +2,8 @@
 \usepackage{float}
 \usepackage{caption, subcaption}
 \usepackage[T1]{fontenc}
-\usepackage[backend=bibtex, maxbibnames=99, sorting=none]{biblatex}
-\addbibresource{sample.bib}
+%\usepackage[style=apa, maxbibnames=99, sorting=none]{biblatex}
+%\addbibresource{references.bib}
 \usepackage{url}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
@@ -19,7 +19,8 @@
 \usepackage{amssymb}
 \usepackage{framed}
 \usepackage{fancyhdr}
-\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue]{hyperref}
+%\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue]{hyperref}
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
 \usepackage{vmargin}
 \usepackage{subcaption} %usamos subcaption mejor que subfig (más moderno)
 \usepackage{eurosym}
@@ -34,7 +35,8 @@
 \usepackage{chngcntr}
 
 \usepackage[framed, numbered]{matlab-prettifier}
- 
+
+
 \counterwithin{figure}{section}
 \counterwithin{table}{section}
 \numberwithin{equation}{section}
@@ -97,6 +99,9 @@
 \rhead{Analysis of Amazon Books and Review}
 \cfoot{\thepage}
 
+\usepackage[authoryear]{natbib}
+
+
 \begin{document}
 
 \begin{titlepage}
@@ -137,20 +142,23 @@
 
 \section{Introduction}
 
-On July 16th, 1995, Amazon opened as an online book retailer, promoting itself as "the world's biggest bookstore". Since then, Amazon has clearly expanded into other ventures but still remains the largest seller of books in the world. Amazon generates \$28 billion worldwide every year with a selection of over 32 million books. With Kindle and Audible, Amazon also has majority control of the ebook and audiobook markets as well. While Amazon is no longer primarily known as predominantly a bookseller, they have succeeded in becoming the most dominant bookstore in the world. The world's largest bookseller gives us the opportunity to acquire and use lots of book data to identify book trends and reader preferences.
+On July 16th, 1995, Amazon opened as an online book retailer, promoting itself as "the world's biggest bookstore". Since then, Amazon has clearly expanded into other ventures but still remains the largest seller of books in the world. Amazon generates \$28 billion worldwide every year with a selection of over 32 million books. With Kindle and Audible, Amazon also has majority control of the ebook and audiobook markets as well. While Amazon is no longer primarily known as predominantly a bookseller, they have succeeded in becoming the most dominant bookstore in the world.
+
+In 2013, Amazon acquired Goodreads, a social cataloging platform for books. Goodreads now has more than 150 million users and has become a cornerstone (for better or worse) in the book community. However, the partnership between world's largest bookseller and the largest community of readers, gives us the opportunity to acquire and use lots of book data to identify book trends and reader preferences.
 
 \section{Literature Reviews}
-There has been extensive research conducted in the fields of sentiment analysis, prediction and text classification. Per instance, \textcite{Almjawel} do Sentiment Analysis of  Amazon Books' Reviews and explore different visual systems that aids users to get information about many books. 
 
-Regarding text classification, determining sentiment polarity stands as a core issue within sentiment analysis and the objective is to ascertain whether a given text segment is positive, neutral or negative. \textcite{Srujan} examine customer book reviews from Amazon.com, conducting a comparative analysis of various classifiers such as, K-Nearest Neighbours (KNN), Random Forest (RF), Naive Bayes (NB) and a sentiment analysis made with NRC Emotion Lexicon words and term frequency-inverse document frequency (TF–IDF).
+There has been extensive research conducted in the fields of sentiment analysis, prediction and text classification. Per instance, \citet{Almjawel2019} do Sentiment Analysis of  Amazon Books' Reviews and explore different visual systems that aids users to get information about many books. 
 
-Beyond the classification text models appear the regression and prediction models using sentiment analysis. Per instance, \textcite{Ganu} showed that using textual information results in better general or personalized review score predictions than those derived from the numerical star ratings given by the users. Additional, the text-based recommendation allows users to get recommendations on specific aspect, and soft clustering-based approaches that group users based on their reviewing styles and interest similarities.
+Regarding text classification, determining sentiment polarity stands as a core issue within sentiment analysis and the objective is to ascertain whether a given text segment is positive, neutral or negative. \citet{Srujan2018} examine customer book reviews from Amazon.com, conducting a comparative analysis of various classifiers such as, K-Nearest Neighbours (KNN), Random Forest (RF), Naive Bayes (NB) and a sentiment analysis made with NRC Emotion Lexicon words and term frequency-inverse document frequency (TF–IDF).
 
-Some 'mix' techniques is worked in \textcite{Asghar} that do Review Rating Prediction as a 5 multi-class classification problem, and build sixteen different prediction models by combining four feature extraction methods, (i) unigrams, (ii) bigrams, (iii) trigrams and (iv) Latent Semantic Indexing, with four machine learning algorithms, (i) logistic regression, (ii) Naive Bayes classication, (iii) perceptrons, and (iv) linear Support Vector Classiffication.
+Beyond the classification text models appear the regression and prediction models using sentiment analysis. Per instance, \cite{Ganu2009} showed that using textual information results in better general or personalized review score predictions than those derived from the numerical star ratings given by the users. Additional, the text-based recommendation allows users to get recommendations on specific aspect, and soft clustering-based approaches that group users based on their reviewing styles and interest similarities.
 
-Additionally, \textcite{Qu}  introduce a bag-of-opinions method. In this framework, an opinion within a review is composed of three elements: a root word, associated modifier words from the same sentence, and any negation words. Each opinion is allocated a numerical score, which is determined through ridge regression. For testing with domain-specific reviews, a review's rating is forecasted by summing the scores of all opinions within the review and integrating this with a domain-specific unigram model.
+Some 'mix' techniques is worked in \cite{Asghar2016} that do Review Rating Prediction as a 5 multi-class classification problem, and build sixteen different prediction models by combining four feature extraction methods, (i) unigrams, (ii) bigrams, (iii) trigrams and (iv) Latent Semantic Indexing, with four machine learning algorithms, (i) logistic regression, (ii) Naive Bayes classication, (iii) perceptrons, and (iv) linear Support Vector Classiffication.
 
-Finally, we use a Quantile Regression defined by \textcite{Koenker}. This regression considers the effect of explanatory variables on the entire conditional distribution of rating. This is particularly useful in understanding the impact of independent variables not just at the center (mean) of the distribution but throughout the distribution. For example, it can show how a change in an independent variable affects the lower, median, and upper parts of the distribution of the dependent variable.
+Additionally, \cite{Qu2010}  introduce a bag-of-opinions method. In this framework, an opinion within a review is composed of three elements: a root word, associated modifier words from the same sentence, and any negation words. Each opinion is allocated a numerical score, which is determined through ridge regression. For testing with domain-specific reviews, a review's rating is forecasted by summing the scores of all opinions within the review and integrating this with a domain-specific unigram model.
+
+Finally, we use a Quantile Regression defined by \cite{Koenker2005}. This regression considers the effect of explanatory variables on the entire conditional distribution of rating. This is particularly useful in understanding the impact of independent variables not just at the center (mean) of the distribution but throughout the distribution. For example, it can show how a change in an independent variable affects the lower, median, and upper parts of the distribution of the dependent variable.
 
 We broadly outline the quantile regresion. Suppose that the random variable \( Y \) has cumulative distribution function (CDF) \( F_Y(y) = P(Y \le y) \). The \( \tau \)-th quantile of \( Y \) is defined as \( Q_\tau(Y) = \inf\{y : F_Y(y) \geq \tau\} \), where \( 0 < \tau < 1 \) is the quantile level. Besides, if \( Y \) is a response variable and \( \mathbf{x} \) is a \( d \)-dimensional predictor. Let \( F_Y(y|\mathbf{x}) = P(Y \le y|\mathbf{x}) \) denote the conditional CDF of \( Y \) given \( \mathbf{x} \). Then the \( \tau \)-th conditional quantile of \( Y \) is defined as
 
@@ -167,67 +175,6 @@ Then, the linear conditional quantile function \( Q_\tau(Y|\mathbf{x}) = \mathbf
 \]
 
 where \( \rho_\tau(u) = u(\tau - \mathbb{I}(u < 0)) \), and \( \mathbb{I} \) is the indicator function.
-
-Koenker, R. W. (2005). Quantile Regression. Cambridge, UK: Cambridge University Press.
-
-A. Almjawel, S. Bayoumi, D. Alshehri, S. Alzahrani and M. Alotaibi, "Sentiment Analysis and Visualization of Amazon Books' Reviews," 2019 2nd International Conference on Computer Applications \& Information Security (ICCAIS), Riyadh, Saudi Arabia, 2019, pp. 1-6.
-
-Asghar, N. (2016). Yelp Dataset Challenge: Review Rating Prediction.
-
-Ganu, G., Elhadad, N., \& Marian, A. (2009). Beyond the Stars: Improving Rating Predictions using Review Text Content. International Workshop on the Web and Databases.
-
-Lizhen Qu, Georgiana Ifrim, and Gerhard Weikum. 2010. The bag-of-opinions method for review rating prediction from sparse text patterns. In Proceedings of the 23rd International Conference on Computational Linguistics (COLING '10). Association for Computational Linguistics, USA, 913–921.
-
-Srujan, K.S., Nikhil, S.S., Raghav Rao, H., Karthik, K., Harish, B., Keerthi Kumar, H. (2018). Classification of Amazon Book Reviews Based on Sentiment Analysis. In: Bhateja, V., Nguyen, B., Nguyen, N., Satapathy, S., Le, DN. (eds) Information Systems Design and Intelligent Applications. Advances in Intelligent Systems and Computing, vol 672. Springer, Singapore.
-
-\begin{filecontents}{references.bib}
-	@book{Koenker,
-		author = {Koenker, R. W.},
-		year = {2005},
-		title = {Quantile Regression},
-		publisher = {Cambridge University Press},
-		address = {Cambridge, UK}
-	}
-	@inproceedings{Almjawel},
-	author = {Almjawel, A. and Bayoumi, S. and Alshehri, D. and Alzahrani, S. and Alotaibi, M.},
-	booktitle = {2019 2nd International Conference on Computer Applications \& Information Security (ICCAIS)},
-	title = {Sentiment Analysis and Visualization of Amazon Books' Reviews},
-	year = {2019},
-	pages = {1-6},
-	address = {Riyadh, Saudi Arabia}
-}
-@misc{Asghar,
-	author = {Asghar, N.},
-	title = {Yelp Dataset Challenge: Review Rating Prediction},
-	year = {2016}
-}
-@inproceedings{Ganu,
-	author = {Ganu, G. and Elhadad, N. and Marian, A.},
-	booktitle = {International Workshop on the Web and Databases},
-	title = {Beyond the Stars: Improving Rating Predictions using Review Text Content},
-	year = {2009}
-}
-@inproceedings{Qu,
-	author = {Qu, Lizhen and Ifrim, Georgiana and Weikum, Gerhard},
-	booktitle = {Proceedings of the 23rd International Conference on Computational Linguistics (COLING '10)},
-	title = {The bag-of-opinions method for review rating prediction from sparse text patterns},
-	year = {2010},
-	pages = {913--921},
-	organization = {Association for Computational Linguistics},
-	address = {USA}
-}
-@incollection{Srujan,
-	author = {Srujan, K.S. and Nikhil, S.S. and Raghav Rao, H. and Karthik, K. and Harish, B. and Keerthi Kumar, H.},
-	booktitle = {Information Systems Design and Intelligent Applications},
-	title = {Classification of Amazon Book Reviews Based on Sentiment Analysis},
-	year = {2018},
-	publisher = {Springer},
-	address = {Singapore},
-	series = {Advances in Intelligent Systems and Computing},
-	volume = {672},
-	editor = {Bhateja, V. and Nguyen, B. and Nguyen, N. and Satapathy, S. and Le, DN.}
-}
-\end{filecontents}
 
 
 \section{Dataset}
@@ -281,7 +228,7 @@ Contained here are two large data sets contain information about Books and infor
     \end{minipage}
 \end{figure}
 
-There are 214,404 books in the book dataset and 3,000,000 reviews in the review dataset - with information scraped from the Google Books API. Clearly, two very large datasets, we subsetted the datasets and reviews to only the most relevant for our purposes.
+There are 214,404 books in the book dataset and 3,000,000 reviews in the review dataset. Clearly, two very large datasets, we subsetted the datasets and reviews to only the most relevant for our purposes.
 
 First we dropped all the books without any ratings or descriptions as these are irrelevant for our purpose. This reduced the amount of books to 45,127. We then dropped any books with less than 10 reviews, considering them insignificant enough. Furthermore, using the \textit{Langid} package in Python, we removed any books that were identified to be any language other than English. This leaves us with 6,399 books.
 
@@ -301,63 +248,30 @@ We only kept the reviews that were for one of our 6,399 books and used the same 
     \includegraphics[width=1.2\textwidth]{genre_counts.png}
     \caption{Percentage of Books by Genre}
     \end{minipage}
+
 \end{figure}
    \begin{figure}[ht]
-
+    \begin{minipage}[b]{0.49\linewidth}
+    \centering
+    \includegraphics[width=0.99\textwidth]{publisher_counts.png}
+    \caption{Percentage of Books by Publisher}
+   \end{minipage}
+    \hspace{0.01cm}
 \begin{minipage}[b]{0.49\linewidth}
     \centering
     \includegraphics[width=0.99\textwidth]{reviewcount.png}
-    \caption{Count of Books per Review Bin }
+    \caption{Percentage of Books by Publisher}
     \end{minipage}
-        \hspace{0.01cm}
-       \begin{minipage}[b]{0.49\linewidth}
-    \centering
-    \includegraphics[width=0.99\textwidth]{genre_reviews.png}
-    \caption{Average Review per Genre}
-   \end{minipage}
-
 \end{figure}
 
 First, to better understand the dataset we performed some exploratory data analysis. By calculating the average review scores for each book, we find that the largest representation of reviews are within the 3.0 - 4.0 range, with a significant majority of the books receiving a rating above 3.0. The median rating was a 3.6 and the mean was also around 3.6. While this in balance may be reflective of our selection bias of only the most reviewed books (i.e. the most popular books), it is typical for people to tend towards higher reviews as people selectively consume things they tend to enjoy rather than sampling randomly (ex. MovieLens dataset).
 
 By genre we see that the majority of the books are fiction. However, this is only broken down into Juvenile Fiction, Young Adult Fiction, and Fiction whereas non-fiction books are broken down into many topics/subtopics. Genres with less than 15 books were grouped into "Other" as there were a number of hyper-specfiic or uninformative genres. Particularly amusing ones include "Fairy", "Diners", "Bachelors", and "Human-computer Interaction".
 
-In Figure 4.3, we have the counts of books by the number of reviews they received (binned by a log 10 scale). Here we see that a significant majority of the books have received less than 100 reviews. However, there is a significant tail with the maximum review count reaching 4,895. Figure 4.4 shows the average review breakdown by genre. Interestingly, this chart implies that fiction books tend to have lower reviews than nonfiction books.
+We also have the breakdown by publishers. While this was not utilized in this paper, an interesting extension of this project would be to use the description data to see if there are any significant differences among how different publishers market their books. 
 
+Finally, we have the counts of books by the number of reviews they received (binned by a log 10 scale). Here we see that a significant majority of the books have received less than 100 reviews. However, there is a significant tail with the maximum review count reaching 4,895.
 
-\section{Descriptions}
-
-For each of the books in the dataset, there is a corresponding description.  To process this description, we removed all non-alphabet characters, tokenize the text, lemmatize the words, and remove stopwords (with the default \textit{nltk} stopwords with the addition of some of our own). These descriptions range from empty to 813 tokens with a mean of 67.19 and a median of 58. For exploration, here are some wordclouds to explore the descriptions using a document term matrix. What becomes immediately apparent in the Figure 5.1, which is created from 1-3 ngrams with no trimming of terms, is that the most common descriptions have very little to do with the actual books but rather to do with generalizations of the book or author. Particularly the phrase (New York Time Bestselling Author stands out). 
-
-\begin{figure}[b]
-\begin{minipage}[b]{0.49\linewidth}
-    \centering
-    \includegraphics[width=0.99\textwidth]{description_wc.png}
-    \caption{ngram - (1,3), no min or max}
-    \end{minipage}
-        \hspace{0.01cm}
- \begin{minipage}[b]{0.49\linewidth}
-    \centering
-    \includegraphics[width=0.99\textwidth]{descrip_wc.png}
-    \caption{(1,3), min - 100, max - 0.3}
- \end{minipage}
- \end{figure} 
-
-This is to be expected because very specific words such as 'Hogwarts', 'Magic', and 'Bach' will not appear in most of the documents. For a more interesting and perhaps informative exploration, we set the minimum document frequency to 100, meaning a term must appear in at least 100 descriptions. This threshold is somewhat arbitrary, as word clouds only include the most frequent terms. Additionally, we set the maximum document frequency to 30 percent, indicating that a term appears in less than 30 percent of the books.
-
-Additionally, here are the wordclouds broken down by the 9 most popular genres. These provide a very interesting cursory perspective on each of these genres. For example, it seems like the philosophy section is dominated by Netizsche's "Thus Spoke Zarathustra" and, for some reason, motorcycles. Most of the other ones follow along expectations, although Juvenile Nonfiction does seem to carry overtly religious undertones.
-
-\begin{figure}[hb]
-    \centering
-    \includegraphics[width = \textwidth]{genre_wordclouds.png}
-\caption{Wordclouds of Term Frequencies by Genre} 
-\end{figure}
-
-\subsection{New York Times Bestsellers}
-
-The prevalence on "New York Times Bestseller" or "New York Times Bestselling Author" then begs the question, do people actually like these books? After a quick linear regression of Review Score to Ratings Count, we see a negative correlation. However, for a more informative look, we ran a quantile regression to see the relationship of Ratings Count with Review Score. Except for the top 10th percentile, it seems that increasing the popularity of books has an adversarial effect on the average review of the book. For a book to come from a bestselling author or New York Times bestseller, it will be interesting to see if this trend holds true. To study this, we will compare the effect of NYT bestseller against other popular books.
-
-Too extract which books are New York Times bestsellers (or written by New York Times Bestselling Authors), I implemented a modified Dictionary Method. I had three dictionaries, one indicating the presence of New York Times, one indicating whether it was bestseller or bestselling, and one with terms referring to the author. The thought behind this is that I will be able to differentiate between descriptions highlighting whether it was the author or the book that was bestselling. Based on this identification system, there are 386 books with 254 of them mentioning the author, and 132 without. For this section, I used all the reviews.
 
 \begin{figure}
     \centering
@@ -365,36 +279,63 @@ Too extract which books are New York Times bestsellers (or written by New York T
 \caption{Quantile Regression of Average Reviews per Book over Count of Reviews} 
 \end{figure}
 
+\subsection{Descriptions}
 
+\subsubsection{New York Times Bestsellers}
 
-\section{Reviews}
+\subsection{Reviews}
 In the reviews, there are two important text features - the review summary and the full review itself.
 
 
-\subsection{Sentiment Analysis}
+\subsubsection{Sentiment Analysis}
 
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.58]{bow_descriptions.png}
+    \caption{Bag of Words - Book Descriptions - MinDF = 20, MaxDF = 0.01}
+\end{figure}
 
 \section{Predicting Review Score from Text}
 
 \section{Review Description Alignment}
 
 \section{Conclusions}
-
-\section{Other Figures}
-
-\begin{figure}
-    \centering
-    \includegraphics[width = 0.5\textwidth]{publisher_counts.png}
-\caption{Percentage of Books by Publisher} 
-\end{figure}
-
 \vspace{1em} 
 
 
 %\bibliographystyle{plain}
 %\bibliography{Bibliography.bib}
+%\printbibliography[heading=bibintoc, title={Bibliografía}]
 
-\newpage
-\printbibliography[heading=bibintoc]
+
+%\bibliographystyle{apalike}
+%\bibliography{references}
+\clearpage  
+
+\begin{thebibliography}{9}
+	
+	\addcontentsline{toc}{section}{References} 
+
+	
+	\bibitem[Almjawel et al.(2019)]{Almjawel2019}
+	1. A. Almjawel, S. Bayoumi, D. Alshehri, S. Alzahrani, and M. Alotaibi (2019). "Sentiment Analysis and Visualization of Amazon Books' Reviews," in \emph{Proceedings of the 2nd International Conference on Computer Applications \& Information Security (ICCAIS)}, Riyadh, Saudi Arabia, pp. 1-6.
+	
+	\bibitem[Asghar(2016)]{Asghar2016}
+	2. N. Asghar (2016). "Yelp Dataset Challenge: Review Rating Prediction."
+	
+	\bibitem[Ganu et al.(2009)]{Ganu2009}
+	3. G. Ganu, N. Elhadad, and A. Marian (2009). "Beyond the Stars: Improving Rating Predictions using Review Text Content," in \emph{Proceedings of the International Workshop on the Web and Databases}.
+	
+	\bibitem[Koenker(2005)]{Koenker2005}
+	4. R. W. Koenker (2005). \emph{Quantile Regression}. Cambridge University Press, Cambridge, UK.
+	
+	\bibitem[Qu et al.(2010)]{Qu2010}
+	5. L. Qu, G. Ifrim, and G. Weikum (2010). "The bag-of-opinions method for review rating prediction from sparse text patterns," in \emph{Proceedings of the 23rd International Conference on Computational Linguistics (COLING '10)}, Association for Computational Linguistics, USA, pp. 913–921.
+	
+	\bibitem[Srujan et al.(2018)]{Srujan2018}
+	6. K. S. Srujan, S. S. Nikhil, H. Raghav Rao, K. Karthik, B. Harish, and H. Keerthi Kumar (2018). "Classification of Amazon Book Reviews Based on Sentiment Analysis," in V. Bhateja, B. Nguyen, N. Nguyen, S. Satapathy, and D. N. Le, eds., \emph{Information Systems Design and Intelligent Applications}, vol. 672 of \emph{Advances in Intelligent Systems and Computing}, Springer, Singapore.
+	
+\end{thebibliography}
+
 
 \end{document}
